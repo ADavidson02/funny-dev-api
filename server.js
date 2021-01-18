@@ -64,11 +64,9 @@ app.post('/api/v1/favorites', (request, response) => {
 app.delete('/api/v1/favorites/:id', (request, response) => {
   const { id } = request.params;
   const parsedId = parseInt(id);
-  console.log(parsedId)
   const match = app.locals.favorites.find(favorite => parseInt(favorite.id) === parsedId);
   
   if(!match) {
-    console.log('match', match)
     return response.status(404).json({error: `No joke found with an id of ${id}.` })
   }
   const updatedFavorites = app.locals.favorites.filter(favorite => parseInt(favorite.id) !== parsedId);
