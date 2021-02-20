@@ -6,6 +6,12 @@ const app = express();
 app.use(express.json())
 
 app.set('port', 3001);
+let port = process.env.PORT
+if (port == null || port == '') {
+  port = 3001
+}
+app.listen(port)
+
 
 app.locals.title = 'FunnyDev API';
 
